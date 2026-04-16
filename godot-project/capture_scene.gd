@@ -9,7 +9,7 @@ extends Node2D
 const MAX_HP := 10
 var player_hp := MAX_HP
 var creatures_remaining := 0
-var _active_creature: Node2D = null
+var _active_creature: Creature = null
 
 enum SceneResult { SUCCESS, FLED, DEAD }
 
@@ -21,15 +21,23 @@ func _ready() -> void:
 	drawing_system.player_damaged.connect(_on_player_damaged)
 	run_away_button.pressed.connect(_on_run_away_pressed)
 
-	for creature in creature_layer.get_children():
+	var bounds := ($Background/BoundaryRect as ColorRect).get_global_rect()
+	for child in creature_layer.get_children():
+		var creature := child as Creature
+		if not creature:
+			continue
 		creatures_remaining += 1
+		creature.scene_bounds = bounds
 		creature.captured.connect(_on_creature_captured.bind(creature))
 
 	_update_hp_display()
 	_update_loop_display()
 
 
-func _on_loop_completed(creature: Node2D) -> void:
+func _on_loop_completed(node: Node2D) -> void:
+	var creature := node as Creature
+	if not creature:
+		return
 	_active_creature = creature
 	creature.add_loop()
 	_update_loop_display()

@@ -1,51 +1,35 @@
 [gd_scene format=3 uid="uid://burchin00001"]
 
-[ext_resource type="Script" uid="uid://cuh0yhvmne0xt" path="res://creatures/urchin.gd" id="1_urch"]
-[ext_resource type="Texture2D" uid="uid://dbs1860gcph5i" path="res://urchin.png" id="2_2nwly"]
-[ext_resource type="Script" uid="uid://c02mkxpf8j6wb" path="res://creatures/shared/capture_hitbox.gd" id="2_urch"]
-[ext_resource type="Script" uid="uid://0lhjqxxw1lsm" path="res://creatures/shared/bounding_box.gd" id="3_urch"]
-[ext_resource type="Script" uid="uid://cepnfq7bnqdy4" path="res://creatures/shared/damage_hitbox.gd" id="4_urch"]
+[ext_resource type="PackedScene" uid="uid://bcreature0001" path="res://creatures/creature.tscn" id="1_base"]
+[ext_resource type="Script" uid="uid://cuh0yhvmne0xt" path="res://creatures/urchin.gd" id="2_script"]
+[ext_resource type="Texture2D" uid="uid://dbs1860gcph5i" path="res://urchin.png" id="3_tex"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_1"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_cap"]
 radius = 12.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_2"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_bound"]
 radius = 20.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_3"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_dmg"]
 radius = 18.0
 
-[node name="Urchin" type="CharacterBody2D" unique_id=959415101]
-collision_layer = 2
-script = ExtResource("1_urch")
+[node name="Urchin" instance=ExtResource("1_base")]
+script = ExtResource("2_script")
+loops_needed = 3
+damage_amount = 1
+speed = 50.0
+boundary_overshoot = 0.0
+boundary_mode = 0
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1025975899]
+[node name="Sprite2D" parent="."]
 scale = Vector2(0.95, 0.95)
-texture = ExtResource("2_2nwly")
+texture = ExtResource("3_tex")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1386327983]
+[node name="CollisionShape2D" parent="CaptureHitbox"]
+shape = SubResource("CircleShape2D_cap")
 
-[node name="CaptureHitbox" type="Area2D" parent="." unique_id=72706780]
-collision_layer = 4
-collision_mask = 0
-script = ExtResource("2_urch")
+[node name="CollisionShape2D" parent="BoundingBox"]
+shape = SubResource("CircleShape2D_bound")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CaptureHitbox" unique_id=840968095]
-shape = SubResource("CircleShape2D_1")
-
-[node name="BoundingBox" type="Area2D" parent="." unique_id=1416005957]
-collision_layer = 16
-collision_mask = 0
-script = ExtResource("3_urch")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BoundingBox" unique_id=2029470107]
-shape = SubResource("CircleShape2D_2")
-
-[node name="DamageHitbox" type="Area2D" parent="." unique_id=872040917]
-collision_layer = 8
-collision_mask = 0
-monitoring = false
-script = ExtResource("4_urch")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageHitbox" unique_id=1614642939]
-shape = SubResource("CircleShape2D_3")
+[node name="CollisionShape2D" parent="DamageHitbox"]
+shape = SubResource("CircleShape2D_dmg")

@@ -1,51 +1,35 @@
 [gd_scene format=3 uid="uid://cpyupiqqw6465"]
 
-[ext_resource type="Script" uid="uid://cwumpppc35hlo" path="res://creatures/dinosaur.gd" id="1_dino"]
-[ext_resource type="Script" uid="uid://c02mkxpf8j6wb" path="res://creatures/shared/capture_hitbox.gd" id="2_dino"]
-[ext_resource type="Texture2D" uid="uid://buwro3pvvpuh2" path="res://dinosaur.png" id="2_itwx8"]
-[ext_resource type="Script" uid="uid://0lhjqxxw1lsm" path="res://creatures/shared/bounding_box.gd" id="3_dino"]
-[ext_resource type="Script" uid="uid://cepnfq7bnqdy4" path="res://creatures/shared/damage_hitbox.gd" id="4_dino"]
+[ext_resource type="PackedScene" uid="uid://bcreature0001" path="res://creatures/creature.tscn" id="1_base"]
+[ext_resource type="Script" uid="uid://cwumpppc35hlo" path="res://creatures/dinosaur.gd" id="2_script"]
+[ext_resource type="Texture2D" uid="uid://buwro3pvvpuh2" path="res://dinosaur.png" id="3_tex"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_1"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_cap"]
 radius = 14.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_2"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_bound"]
 radius = 22.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_3"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_dmg"]
 radius = 20.0
 
-[node name="Dinosaur" type="CharacterBody2D" unique_id=1858447942]
-collision_layer = 2
-script = ExtResource("1_dino")
+[node name="Dinosaur" instance=ExtResource("1_base")]
+script = ExtResource("2_script")
+loops_needed = 4
+damage_amount = 2
+speed = 90.0
+boundary_overshoot = 0.0
+boundary_mode = 0
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=44420228]
+[node name="Sprite2D" parent="."]
 scale = Vector2(0.695, 0.695)
-texture = ExtResource("2_itwx8")
+texture = ExtResource("3_tex")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1283167671]
+[node name="CollisionShape2D" parent="CaptureHitbox"]
+shape = SubResource("CircleShape2D_cap")
 
-[node name="CaptureHitbox" type="Area2D" parent="." unique_id=996279124]
-collision_layer = 4
-collision_mask = 0
-script = ExtResource("2_dino")
+[node name="CollisionShape2D" parent="BoundingBox"]
+shape = SubResource("CircleShape2D_bound")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CaptureHitbox" unique_id=704506666]
-shape = SubResource("CircleShape2D_1")
-
-[node name="BoundingBox" type="Area2D" parent="." unique_id=606208233]
-collision_layer = 16
-collision_mask = 0
-script = ExtResource("3_dino")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BoundingBox" unique_id=82895134]
-shape = SubResource("CircleShape2D_2")
-
-[node name="DamageHitbox" type="Area2D" parent="." unique_id=7507649]
-collision_layer = 8
-collision_mask = 0
-monitoring = false
-script = ExtResource("4_dino")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageHitbox" unique_id=368068703]
-shape = SubResource("CircleShape2D_3")
+[node name="CollisionShape2D" parent="DamageHitbox"]
+shape = SubResource("CircleShape2D_dmg")

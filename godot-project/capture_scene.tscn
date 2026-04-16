@@ -2,7 +2,10 @@
 
 [ext_resource type="Script" uid="uid://cb063jf8xdbij" path="res://capture_scene.gd" id="1_cap"]
 [ext_resource type="Script" uid="uid://c4kkawkgkjo01" path="res://drawing_system.gd" id="2_cap"]
+[ext_resource type="PackedScene" uid="uid://burchin00001" path="res://creatures/urchin.tscn" id="3_7vojn"]
 [ext_resource type="PackedScene" uid="uid://cpyupiqqw6465" path="res://creatures/dinosaur.tscn" id="3_n5x12"]
+[ext_resource type="PackedScene" uid="uid://bbird0000001" path="res://creatures/bird.tscn" id="4_ogdtm"]
+[ext_resource type="PackedScene" uid="uid://bfox000000001" path="res://creatures/fox.tscn" id="4_ui4qe"]
 
 [node name="CaptureScene" type="Node2D" unique_id=808829657]
 script = ExtResource("1_cap")
@@ -18,6 +21,15 @@ color = Color(0.149, 0.298, 0.149, 1)
 
 [node name="Dinosaur" parent="CreatureLayer" unique_id=1858447942 instance=ExtResource("3_n5x12")]
 position = Vector2(316, 219)
+
+[node name="Urchin" parent="CreatureLayer" unique_id=1852645322 instance=ExtResource("3_7vojn")]
+position = Vector2(212, 293)
+
+[node name="Fox" parent="CreatureLayer" unique_id=149474242 instance=ExtResource("4_ui4qe")]
+position = Vector2(466, 198)
+
+[node name="Bird" parent="CreatureLayer" unique_id=590855157 instance=ExtResource("4_ogdtm")]
+position = Vector2(191, 191)
 
 [node name="DrawingSystem" type="Node2D" parent="." unique_id=2022774286]
 script = ExtResource("2_cap")
