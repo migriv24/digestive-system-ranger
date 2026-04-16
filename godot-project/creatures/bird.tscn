@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://bbird0000001"]
+
+[ext_resource type="Script" uid="uid://c05akioth5u1o" path="res://creatures/bird.gd" id="1_bird"]
+[ext_resource type="Texture2D" uid="uid://c60hqggou4ep5" path="res://bird.png" id="2_07phc"]
+[ext_resource type="Script" uid="uid://c02mkxpf8j6wb" path="res://creatures/shared/capture_hitbox.gd" id="2_bird"]
+[ext_resource type="Script" uid="uid://0lhjqxxw1lsm" path="res://creatures/shared/bounding_box.gd" id="3_bird"]
+[ext_resource type="Script" uid="uid://cepnfq7bnqdy4" path="res://creatures/shared/damage_hitbox.gd" id="4_bird"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2"]
+radius = 18.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3"]
+radius = 12.0
+
+[node name="Bird" type="CharacterBody2D" unique_id=1357328998]
+collision_layer = 2
+script = ExtResource("1_bird")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1077682877]
+scale = Vector2(0.825, 0.825)
+texture = ExtResource("2_07phc")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=678031121]
+
+[node name="CaptureHitbox" type="Area2D" parent="." unique_id=137390869]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("2_bird")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CaptureHitbox" unique_id=2127514377]
+shape = SubResource("CircleShape2D_1")
+
+[node name="BoundingBox" type="Area2D" parent="." unique_id=642304625]
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("3_bird")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BoundingBox" unique_id=1867565210]
+shape = SubResource("CircleShape2D_2")
+
+[node name="DamageHitbox" type="Area2D" parent="." unique_id=952254851]
+collision_layer = 8
+collision_mask = 0
+monitoring = false
+script = ExtResource("4_bird")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageHitbox" unique_id=1473949327]
+shape = SubResource("CircleShape2D_3")
