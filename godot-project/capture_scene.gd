@@ -18,6 +18,7 @@ func _ready() -> void:
 	drawing_system.creature_layer = creature_layer
 	drawing_system.loop_completed.connect(_on_loop_completed)
 	drawing_system.line_broke.connect(_on_line_broke)
+	drawing_system.line_cleared.connect(_on_line_cleared)
 	drawing_system.player_damaged.connect(_on_player_damaged)
 	run_away_button.pressed.connect(_on_run_away_pressed)
 
@@ -44,6 +45,15 @@ func _on_loop_completed(node: Node2D) -> void:
 
 
 func _on_line_broke() -> void:
+	pass
+
+
+func _on_line_cleared() -> void:
+	_active_creature = null
+	for child in creature_layer.get_children():
+		var creature := child as Creature
+		if creature:
+			creature.loop_count = 0
 	_update_loop_display()
 
 

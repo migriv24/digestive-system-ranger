@@ -2,6 +2,7 @@ extends Node2D
 
 signal loop_completed(creature: Node2D)
 signal line_broke
+signal line_cleared
 signal player_damaged(amount: int)
 
 const MAX_LINE_LENGTH := 1200.0
@@ -136,6 +137,7 @@ func _clear_line() -> void:
 	line_length = 0.0
 	is_drawing = false
 	capture_line.clear_points()
+	emit_signal("line_cleared")
 
 
 # Returns true if the segment (seg_start → seg_end) intersects the Area2D's CollisionShape2D.
