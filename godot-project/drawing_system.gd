@@ -36,9 +36,11 @@ func _process(_delta: float) -> void:
 	if segment_len < 2.0:
 		return
 
-	if line_length + segment_len > MAX_LINE_LENGTH:
-		_break_line()
-		return
+	# Trim the oldest segments from the front to stay within MAX_LINE_LENGTH
+	while line_length + segment_len > MAX_LINE_LENGTH and points.size() > 1:
+		line_length -= points[0].distance_to(points[1])
+		points.remove_at(0)
+	line_length = maxf(line_length, 0.0)
 
 	# Check if the new segment crosses any earlier segment in the line.
 	# Skip the last 2 recorded segments to avoid false positives near the cursor.
