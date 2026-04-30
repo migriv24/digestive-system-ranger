@@ -28,6 +28,8 @@ var scene_bounds: Rect2
 
 var loop_count: int = 0
 
+@onready var _loop_label: Label = $LoopLabel
+
 
 func _physics_process(delta: float) -> void:
 	_do_movement(delta)
@@ -53,6 +55,14 @@ func add_loop() -> void:
 	if loop_count >= loops_needed:
 		emit_signal("captured")
 		queue_free()
+	else:
+		_loop_label.text = str(loops_needed - loop_count)
+		_loop_label.visible = true
+
+
+func reset_loops() -> void:
+	loop_count = 0
+	_loop_label.visible = false
 
 
 func _apply_boundary() -> void:

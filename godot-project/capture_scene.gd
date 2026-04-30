@@ -53,7 +53,7 @@ func _on_line_cleared() -> void:
 	for child in creature_layer.get_children():
 		var creature := child as Creature
 		if creature:
-			creature.loop_count = 0
+			creature.reset_loops()
 	_update_loop_display()
 
 

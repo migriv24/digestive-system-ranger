@@ -23,6 +23,12 @@ script = ExtResource("1_base")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
+[node name="LoopLabel" type="Label" parent="."]
+position = Vector2(-40, -45)
+custom_minimum_size = Vector2(80, 20)
+horizontal_alignment = 1
+visible = false
+
 [node name="CaptureHitbox" type="Area2D" parent="."]
 collision_layer = 4
 collision_mask = 0
