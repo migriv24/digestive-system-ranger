@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Digestive System Ranger &mdash; BI 103 Lab</title>
+  <script src="coi-serviceworker.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header>
+    <div class="header-inner">
+      <p class="header-pre">BI 103 &nbsp;&middot;&nbsp; Digestive System Laboratory</p>
+      <h1>Digestive System Ranger</h1>
+      <p class="subtitle">Guide food through the human digestive tract &mdash; one organ at a time.</p>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="how-to">
+      <div class="how-grid">
+        <div class="how-card">
+          <span class="how-icon">&#x1F35E;</span>
+          <h3>Choose Your Meal</h3>
+          <p>Pick a food item. Your choice enters the mouth and begins its journey through the digestive tract.</p>
+        </div>
+        <div class="how-card">
+          <span class="how-icon">&#x1F4A7;</span>
+          <h3>Draw to Capture</h3>
+          <p>In the mouth and stomach: click and drag to draw a closed loop around food particles to process them.</p>
+        </div>
+        <div class="how-card">
+          <span class="how-icon">&#x1F44B;</span>
+          <h3>Click to Swallow</h3>
+          <p>In the esophagus: click repeatedly to speed up peristalsis and push the bolus toward the stomach.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="game-section">
+      <div class="game-frame-wrap">
+        <div id="game-loading" class="game-loading">
+          <div class="spinner"></div>
+          <p>Loading game&hellip;</p>
+          <p class="loading-note">If the game does not appear, your browser may need to allow popups or enable JavaScript.</p>
+        </div>
+        <iframe
+          id="game-frame"
+          src="game/index.html"
+          title="Digestive System Ranger"
+          allowfullscreen
+          allow="autoplay; fullscreen"
+          scrolling="no"
+        ></iframe>
+      </div>
+      <button class="fullscreen-btn" id="fullscreen-btn" title="Fullscreen">&#x26F6; Fullscreen</button>
+    </section>
+
+    <section class="digest-ref">
+      <h2>The Journey of a Meal</h2>
+      <div class="ref-grid">
+
+        <div class="ref-card">
+          <h3>&#x1F9B7; Mouth</h3>
+          <p><strong>Structures:</strong> Teeth, tongue, salivary glands.</p>
+          <p><strong>Process:</strong> Teeth mechanically break food into smaller pieces (mastication). Salivary amylase begins chemical digestion of starches. Food mixes with saliva to form a soft ball called a <strong>bolus</strong>.</p>
+          <p><strong>Problems:</strong> Cavities, dry mouth (xerostomia), poor chewing leading to incomplete digestion.</p>
+        </div>
+
+        <div class="ref-card">
+          <h3>&#x1FAA1; Esophagus</h3>
+          <p><strong>Structures:</strong> Muscular tube, lower esophageal sphincter.</p>
+          <p><strong>Process:</strong> <strong>Peristalsis</strong> (rhythmic muscle contractions) pushes the bolus from the throat to the stomach. The sphincter prevents stomach acid from backing up.</p>
+          <p><strong>Problems:</strong> GERD (acid reflux), difficulty swallowing (dysphagia).</p>
+        </div>
+
+        <div class="ref-card">
+          <h3>&#x1FAD9; Stomach</h3>
+          <p><strong>Structures:</strong> Gastric glands, pyloric sphincter.</p>
+          <p><strong>Process:</strong> Gastric acid (HCl) and pepsin break proteins. Churning mixes everything into a semi-liquid called <strong>chyme</strong>. The pyloric sphincter releases chyme slowly into the small intestine.</p>
+          <p><strong>Problems:</strong> Ulcers, gastritis, delayed emptying (gastroparesis).</p>
+        </div>
+
+        <div class="ref-card">
+          <h3>&#x1F9EA; Small Intestine &amp; Accessory Organs</h3>
+          <p><strong>Structures:</strong> Duodenum, jejunum, ileum; liver, gallbladder, pancreas.</p>
+          <p><strong>Process:</strong> Bile (from gallbladder) emulsifies fats. Pancreatic enzymes break down proteins, fats, and carbohydrates. Villi and microvilli absorb <strong>nutrients</strong> (amino acids, glucose, fatty acids) into the bloodstream and lymph.</p>
+          <p><strong>Problems:</strong> Celiac disease, Crohn&apos;s disease, lactose intolerance, gallstones.</p>
+        </div>
+
+        <div class="ref-card">
+          <h3>&#x1F4A7; Large Intestine</h3>
+          <p><strong>Structures:</strong> Cecum, colon (ascending, transverse, descending, sigmoid), appendix.</p>
+          <p><strong>Process:</strong> Absorbs <strong>water and electrolytes</strong> from remaining indigestible material. Gut bacteria ferment fiber and produce some B vitamins and vitamin K. Remaining material forms <strong>feces</strong>.</p>
+          <p><strong>Problems:</strong> IBS, colitis, constipation, colorectal cancer, diverticulitis.</p>
+        </div>
+
+        <div class="ref-card">
+          <h3>&#x1F6BD; Rectum &amp; Anus</h3>
+          <p><strong>Structures:</strong> Rectum, internal and external anal sphincters.</p>
+          <p><strong>Process:</strong> Feces are stored in the rectum until stretch receptors trigger the defecation reflex. The internal sphincter relaxes involuntarily; the external sphincter is under voluntary control, allowing timed elimination.</p>
+          <p><strong>Problems:</strong> Hemorrhoids, rectal prolapse, fecal incontinence.</p>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>BI 103 &nbsp;&middot;&nbsp; Spring 2026 &nbsp;&middot;&nbsp; Oregon State University</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
