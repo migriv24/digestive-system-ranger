@@ -2,15 +2,26 @@
 const frame = document.getElementById('game-frame');
 const loading = document.getElementById('game-loading');
 
+function notifyIframeResize() {
+  try { frame.contentWindow.dispatchEvent(new Event('resize')); } catch(e) {}
+}
+
 if (frame && loading) {
   frame.addEventListener('load', () => {
-    setTimeout(() => loading.classList.add('hidden'), 600);
+    setTimeout(() => {
+      loading.classList.add('hidden');
+      notifyIframeResize();
+    }, 600);
   });
 }
 
 /* Fullscreen button */
 const fsBtn = document.getElementById('fullscreen-btn');
 const wrap  = document.querySelector('.game-frame-wrap');
+
+if (wrap && window.ResizeObserver) {
+  new ResizeObserver(notifyIframeResize).observe(wrap);
+}
 
 if (fsBtn && wrap) {
   fsBtn.addEventListener('click', () => {

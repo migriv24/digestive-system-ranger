@@ -124,14 +124,13 @@ main {
 .game-frame-wrap {
   position: relative;
   width: 100%;
-  max-width: 720px;
+  height: clamp(380px, 72vh, 860px);
   background: #0d1a10;
   border-radius: var(--radius);
   overflow: hidden;
   box-shadow:
     0 0 0 3px var(--green),
     0 12px 40px rgba(26,92,58,0.25);
-  aspect-ratio: 4 / 3;
 }
 
 .game-loading {
